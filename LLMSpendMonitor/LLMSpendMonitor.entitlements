@@ -8,9 +8,12 @@
 	<true/>
 	<key>com.apple.security.files.user-selected.read-only</key>
 	<true/>
+	<!-- Pinned to the app's first bundle identifier, not derived from the
+	     current one: 0.1.0 shipped as com.bestmark.LLMSpendMonitor and saved
+	     its keys in this group. Deriving it would leave those keys unreadable. -->
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+		<string>$(AppIdentifierPrefix)com.bestmark.LLMSpendMonitor</string>
 	</array>
 </dict>
 </plist>

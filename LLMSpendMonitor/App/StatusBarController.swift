@@ -171,7 +171,9 @@ enum StatusBarMenuAction: Int, CaseIterable, Equatable {
 /// icon, name, version, build, copyright — so only the part AppKit cannot know
 /// is supplied: that the source is public and under which licence.
 enum AboutPanel {
+    static let websiteURL = URL(string: "https://usespender.com")
     static let repositoryURL = URL(string: "https://github.com/bestmark1/spender")
+    static let authorOnXURL = URL(string: "https://x.com/thesignalnow")
 
     @MainActor
     static func present() {
@@ -196,10 +198,26 @@ enum AboutPanel {
             ]
         )
 
-        if let repositoryURL {
+        // Where to find the app and the person behind it, on one line.
+        let links: [(title: String, url: URL?)] = [
+            ("usespender.com", websiteURL),
+            ("GitHub", repositoryURL),
+            ("X", authorOnXURL)
+        ]
+        let available = links.compactMap { link in link.url.map { (link.title, $0) } }
+        for (index, link) in available.enumerated() {
+            if index > 0 {
+                credits.append(NSAttributedString(
+                    string: MetricFormatting.separator,
+                    attributes: [
+                        .font: NSFont.systemFont(ofSize: 11),
+                        .foregroundColor: NSColor.secondaryLabelColor
+                    ]
+                ))
+            }
             credits.append(NSAttributedString(
-                string: "View the source on GitHub",
-                attributes: [.font: NSFont.systemFont(ofSize: 11), .link: repositoryURL]
+                string: link.0,
+                attributes: [.font: NSFont.systemFont(ofSize: 11), .link: link.1]
             ))
         }
 
