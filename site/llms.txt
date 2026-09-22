@@ -4,7 +4,7 @@
 
 - Platform: macOS 14 or later, native SwiftUI menu bar panel.
 - Price: free. License: MIT.
-- Status: the first release is in preparation; the app can be built from source.
+- Download: signed and notarized DMG at https://github.com/bestmark1/spender/releases/latest/download/Spender.dmg (version 0.1.0).
 - Providers: OpenAI, Anthropic, DeepSeek, Kimi, Qwen (Alibaba Cloud Model Studio), xAI Grok, OpenRouter.
 - Periods: today, yesterday and the last 30 days, with a daily spend chart split by provider.
 - Official and estimated figures are labelled separately. A metric a provider does not report is left blank, never shown as $0.

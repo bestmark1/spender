@@ -28,6 +28,9 @@ OUTPUT = ROOT / "index.html"
 
 SITE_URL = "https://usespender.com/"
 REPO_URL = "https://github.com/bestmark1/spender"
+# Always the newest release: the DMG keeps one name across versions.
+DOWNLOAD_URL = f"{REPO_URL}/releases/latest/download/Spender.dmg"
+VERSION = "0.1.0"
 
 
 def versioned(relative: str) -> str:
@@ -79,6 +82,8 @@ RESPONSIVE = """
     .grid-principles  { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px; }
 
     img { max-width: 100%; }
+
+    .btn-watch { display: none; }
 
     /* Section spacing comes from the artboard as --pad-top / --pad-bottom. */
     .wrap { padding-top: var(--pad-top, 0); padding-bottom: var(--pad-bottom, 0); }
@@ -148,6 +153,7 @@ RESPONSIVE = """
 
       /* The button does not wrap and its label is wider than a phone, so on a
          narrow screen it takes the column instead of widening the page. */
+      .btn-download { display: none !important; }
       .btn {
         display: flex;
         width: 100%;
@@ -282,6 +288,8 @@ def structured_data(body: str) -> str:
                 "applicationCategory": "DeveloperApplication",
                 "operatingSystem": "macOS 14 or later",
                 "isAccessibleForFree": True,
+                "softwareVersion": VERSION,
+                "downloadUrl": DOWNLOAD_URL,
                 "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
                 "license": f"{REPO_URL}/blob/main/LICENSE",
                 "image": f"{SITE_URL}assets/spender-icon-160.png",
@@ -358,11 +366,20 @@ def main() -> None:
             extra += ' loading="lazy"'
         body = body.replace(f'src="{shot}.webp"', f'src="{versioned(path)}"{extra}')
 
-    # There is no release to download yet, so the page does not offer one.
-    downloads = body.count("Download for Mac")
-    if downloads:
-        body = body.replace(f'href="{REPO_URL}/releases"', f'href="{REPO_URL}"')
-        body = body.replace("Download for Mac", "Watch for the first release")
+    # A phone cannot install a Mac app, so there each download button gives
+    # way to a link to the repository; CSS picks one per screen size.
+    download_open = f'<a class="btn" href="{DOWNLOAD_URL}">'
+    downloads = body.count(download_open)
+    if downloads == 0:
+        fail("no download button found in the artboard")
+    body = body.replace(download_open, f'<a class="btn btn-download" href="{DOWNLOAD_URL}">')
+    body = re.sub(
+        r'(<a class="btn btn-download".*?</a>)',
+        lambda m: m.group(1)
+        + f'\n<a class="btn btn-watch" href="{REPO_URL}">View on GitHub — for your Mac</a>',
+        body,
+        flags=re.S,
+    )
 
     if "support.js" in body or "<x-dc" in body:
         fail("canvas machinery leaked into the page body")
@@ -376,7 +393,7 @@ def main() -> None:
     print(
         f"wrote {OUTPUT.relative_to(ROOT.parent)} — "
         f"{len(page.splitlines())} lines, {len(GRID_CLASSES)} grids classed, "
-        f"{downloads} download CTA(s) rewritten"
+        f"{downloads} download button(s) with a phone fallback"
     )
 
 

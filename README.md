@@ -20,8 +20,18 @@ It never passes an estimate off as an official figure: every number is labelled
 with where it came from, and a metric a provider does not report is left blank
 rather than rounded down to zero.
 
-> **Nothing to download yet.** No build is published, so run it by building from
-> source — see [Build and run](#build-and-run).
+## Install
+
+**[Download Spender.dmg](https://github.com/bestmark1/spender/releases/latest/download/Spender.dmg)**
+— the latest release, for macOS 14 or later. Open it and drag Spender to
+Applications. The app is signed with a Developer ID and notarized by Apple, so
+macOS opens it without a warning. Release notes and checksums are on the
+[Releases page](https://github.com/bestmark1/spender/releases).
+
+Spender lives in the menu bar and has no Dock icon. Connect a provider from
+**Options → Connections**, and turn on **Options → Settings → Launch at Login**
+to keep it there after a restart. Prefer to build it yourself? See
+[Build and run](#build-and-run).
 
 ## What it does
 
@@ -164,6 +174,14 @@ To build and install a signed Release copy in `/Applications/Spender.app`:
 ```
 
 The installer builds from the current checkout, replaces only `/Applications/Spender.app`, verifies its code signature, and launches it. Enable **Options → Settings → Launch at Login** if desired.
+
+### Release builds
+
+`./scripts/release.zsh` produces the published DMG: it archives the Release
+build, signs it with a Developer ID, has Apple notarize the app and the DMG,
+staples both and checks them with Gatekeeper. It needs the maintainer's
+Developer ID certificate and stored notarization credentials, and it only
+writes to `.build/release/`; publishing the release is a separate step.
 
 ## Tests
 
