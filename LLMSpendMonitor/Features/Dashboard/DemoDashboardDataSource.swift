@@ -1,15 +1,51 @@
-#if DEBUG
-import Foundation
+import AppKit
 
-/// Launch options for the screenshot demo build.
+/// Sample data: the real interface over fixed, fictional figures.
 ///
-/// The demo build exists so marketing screenshots can show the real interface
-/// without exposing real spend, balances, or which providers are actually
-/// connected. It never touches Keychain, the network, or the standard
-/// UserDefaults domain: pass `SPENDER_CUSTOMIZATION_SUITE` and
-/// `SPENDER_PLATFORM_BALANCE_SUITE` to isolate persistence.
+/// It serves two purposes. Anyone can try the app before handing it an API
+/// key — "Try with sample data" relaunches it into this mode — and
+/// screenshots can show the interface without real spend. A sample launch
+/// never touches the Keychain, the network, or the app's own settings: its
+/// preferences live in separate suites that are reseeded on every launch.
+/// Switches between the real app and sample data by relaunching.
+///
+/// Sample data is chosen at launch, for the whole process — the data source,
+/// the credential store and the settings suites all follow it — so switching
+/// starts a fresh instance rather than swapping those out from under a
+/// running one.
+///
+/// The choice travels in the app's settings, not as a launch argument: a
+/// sandboxed app's arguments to its own relaunch were dropped, and the new
+/// instance came up as the real app again. Stored, it also survives a quit,
+/// so sample data stays until the person chooses Exit.
+enum SampleData {
+    static let modeKey = "sample-data-mode-v1"
+
+    @MainActor
+    static func relaunch(showingSampleData: Bool) {
+        UserDefaults.standard.set(showingSampleData, forKey: modeKey)
+        let configuration = NSWorkspace.OpenConfiguration()
+        configuration.createsNewApplicationInstance = true
+        NSWorkspace.shared.openApplication(
+            at: Bundle.main.bundleURL,
+            configuration: configuration
+        ) { _, error in
+            // Quit only once the new instance is up; if it failed to start,
+            // staying open is better than leaving nothing in the menu bar.
+            guard error == nil else { return }
+            Task { @MainActor in NSApplication.shared.terminate(nil) }
+        }
+    }
+}
+
 enum DemoLaunch {
     static let isEnabled = ProcessInfo.processInfo.arguments.contains("--demo-data")
+        || UserDefaults.standard.bool(forKey: SampleData.modeKey)
+
+    /// Where a sample launch keeps customization and card state.
+    static let sampleSuiteName = "com.bestmark1.Spender.sample"
+    /// Where a sample launch keeps its entered balances.
+    static let sampleBalanceSuiteName = "com.bestmark1.Spender.sample.balances"
 
     /// Providers shown in the demo, in panel order.
     ///
@@ -18,6 +54,9 @@ enum DemoLaunch {
     /// 420x640, and an expanded card takes most of it.
     static let providerIDs: [ProviderID] = {
         let fallback: [ProviderID] = [.openAI, .deepSeek, .anthropic, .xAI]
+#if !DEBUG
+        return fallback
+#else
         guard
             let raw = ProcessInfo.processInfo.environment["SPENDER_DEMO_PROVIDERS"],
             !raw.isEmpty
@@ -27,6 +66,7 @@ enum DemoLaunch {
             .split(separator: ",")
             .compactMap { ProviderID(rawValue: $0.trimmingCharacters(in: .whitespaces)) }
         return requested.isEmpty ? fallback : requested
+#endif
     }()
 
     /// Cards to show expanded. The prominent "Estimated period spend" label and
@@ -36,15 +76,20 @@ enum DemoLaunch {
     /// problem, so a capture can show the longest badges ("Incomplete report",
     /// "Balance unavailable") instead of only "Up to date".
     static func issue(for providerID: ProviderID) -> ProviderIssue? {
+#if !DEBUG
+        return nil
+#else
         guard let raw = ProcessInfo.processInfo.environment["SPENDER_DEMO_ISSUE"] else {
             return nil
         }
         let parts = raw.split(separator: ":", maxSplits: 1).map(String.init)
         guard parts.count == 2, parts[0] == providerID.rawValue else { return nil }
         return ProviderIssue(rawValue: parts[1])
+#endif
     }
 
     static func seedCardExpansion() {
+#if DEBUG
         guard let defaults else { return }
         // Only an explicit request overrides stored state. Resetting unconditionally on
         // every launch would wipe expansion a test (or a person) had just set.
@@ -63,17 +108,40 @@ enum DemoLaunch {
                 forKey: "provider.card.\(providerID.rawValue).expanded"
             )
         }
+#endif
     }
 
     /// Shared for the process: the connections screen rebuilds its view models
     /// on every render, and a fresh store each time would drop what was typed.
     static let credentialStore = DemoCredentialStore()
 
+    /// Customization and card state for a sample launch; nil otherwise.
     static var defaults: UserDefaults? {
         guard isEnabled else { return nil }
-        let suiteName = ProcessInfo.processInfo.environment["SPENDER_CUSTOMIZATION_SUITE"]
-        guard let suiteName, !suiteName.isEmpty else { return nil }
-        return UserDefaults(suiteName: suiteName)
+        return UserDefaults(suiteName: suiteName(
+            environment: "SPENDER_CUSTOMIZATION_SUITE",
+            fallback: sampleSuiteName
+        ))
+    }
+
+    /// Entered balances for a sample launch; nil otherwise.
+    static var balanceDefaults: UserDefaults? {
+        guard isEnabled else { return nil }
+        return UserDefaults(suiteName: suiteName(
+            environment: "SPENDER_PLATFORM_BALANCE_SUITE",
+            fallback: sampleBalanceSuiteName
+        ))
+    }
+
+    /// Tests and screenshot runs name a fresh suite per launch; everyone else
+    /// gets the fixed sample suite.
+    private static func suiteName(environment key: String, fallback: String) -> String {
+#if DEBUG
+        if let name = ProcessInfo.processInfo.environment[key], !name.isEmpty {
+            return name
+        }
+#endif
+        return fallback
     }
 
     /// Makes the four demo providers visible and ordered. xAI is hidden by
@@ -95,9 +163,7 @@ enum DemoLaunch {
     /// card. Entered amounts sit well above each provider's 30-day total so the
     /// automatic deduction still leaves a sensible remainder.
     static func seedPlatformBalances() {
-        guard isEnabled else { return }
-        let suiteName = ProcessInfo.processInfo.environment["SPENDER_PLATFORM_BALANCE_SUITE"]
-        guard let suiteName, !suiteName.isEmpty else { return }
+        guard let balanceDefaults else { return }
 
         let enteredBalances: [ProviderID: String] = [
             .openAI: "42.50",
@@ -119,9 +185,7 @@ enum DemoLaunch {
             )
         }
 
-        UserDefaultsPlatformBalanceStore(
-            defaults: UserDefaults(suiteName: suiteName)
-        ).save(checkpoints)
+        UserDefaultsPlatformBalanceStore(defaults: balanceDefaults).save(checkpoints)
     }
 }
 
@@ -492,4 +556,3 @@ enum DemoSnapshotFactory {
         calendar.startOfDay(for: Date())
     }
 }
-#endif

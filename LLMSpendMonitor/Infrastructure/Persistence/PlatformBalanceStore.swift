@@ -32,6 +32,10 @@ final class UserDefaultsPlatformBalanceStore: PlatformBalanceStoring {
     }
 
     private static func defaultDefaults() -> UserDefaults {
+        // A sample launch must never write its fictional balances over yours.
+        if let sample = DemoLaunch.balanceDefaults {
+            return sample
+        }
         #if DEBUG
         if
             let suiteName = ProcessInfo.processInfo.environment["SPENDER_PLATFORM_BALANCE_SUITE"],

@@ -149,6 +149,14 @@ private struct OnboardingView: View {
                 .controlSize(.large)
                 .accessibilityIdentifier("onboarding.connect")
 
+            // For anyone not ready to hand over a billing key yet: the whole
+            // interface, over made-up figures, with a way back from inside it.
+            Button("Try with sample data") {
+                SampleData.relaunch(showingSampleData: true)
+            }
+            .buttonStyle(.link)
+            .accessibilityIdentifier("onboarding.sampleData")
+
             // One exit, not two. The close button did the same job as Skip and only
             // made the reader choose between them.
             Button("Skip for now", action: skip)
@@ -209,6 +217,11 @@ private struct DashboardView: View {
             // the card's inset plus its own content inset.
             .padding(.horizontal, MenuPanelMetrics.summaryContentInset)
             .measuringPanelPart("header")
+
+            if DemoLaunch.isEnabled {
+                SampleDataBanner()
+                    .measuringPanelPart("banner")
+            }
 
             PeriodPicker(selection: $viewModel.selectedPeriod)
                 .measuringPanelPart("picker")
@@ -401,7 +414,41 @@ private struct DashboardView: View {
         guard rows.count == 4, let list = partHeights["list"] else {
             return MenuPanelMetrics.defaultHeight
         }
-        return MenuPanelMetrics.chromeHeight + rows.reduce(0, +) + min(list, listCap)
+        // The sample-data banner is a fifth row, present only in that mode.
+        let banner = partHeights["banner"].map { $0 + MenuPanelMetrics.headerInset } ?? 0
+        return MenuPanelMetrics.chromeHeight + rows.reduce(0, +) + banner + min(list, listCap)
+    }
+}
+
+/// Says, on every screen of a sample launch, that the figures are made up,
+/// and offers the way back to the person's own data.
+private struct SampleDataBanner: View {
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "sparkles.rectangle.stack")
+                .foregroundStyle(Color.accentColor)
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: 1) {
+                Text("Sample data")
+                    .font(.callout.weight(.semibold))
+                Text("Made-up figures. Nothing is read from your accounts.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer(minLength: 8)
+            Button("Exit") {
+                SampleData.relaunch(showingSampleData: false)
+            }
+            .controlSize(.small)
+            .accessibilityLabel("Exit sample data")
+            .accessibilityIdentifier("sampleData.exit")
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 9)
+        .background(Color.accentColor.opacity(0.12), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("sampleData.banner")
     }
 }
 
@@ -441,15 +488,11 @@ private extension View {
     /// the installed app's preferences.
     @ViewBuilder
     func demoAppStorageIfNeeded() -> some View {
-#if DEBUG
         if let defaults = DemoLaunch.defaults {
             defaultAppStorage(defaults)
         } else {
             self
         }
-#else
-        self
-#endif
     }
 }
 

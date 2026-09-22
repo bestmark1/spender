@@ -23,6 +23,9 @@ final class UserDefaultsProviderCustomizationStore: ProviderCustomizationStoring
     }
 
     private static var defaultDefaults: UserDefaults {
+        if let sample = DemoLaunch.defaults {
+            return sample
+        }
 #if DEBUG
         if let suiteName = ProcessInfo.processInfo.environment["SPENDER_CUSTOMIZATION_SUITE"],
            let defaults = UserDefaults(suiteName: suiteName) {

@@ -125,7 +125,6 @@ final class DashboardViewModel: ObservableObject {
     /// build gets fixed fictional snapshots instead, so the interface can be
     /// photographed without real spend, balances, or credentials.
     static func launchConfigured() -> DashboardViewModel {
-#if DEBUG
         if DemoLaunch.isEnabled {
             DemoLaunch.seedCustomizationPreferences()
             DemoLaunch.seedPlatformBalances()
@@ -136,7 +135,6 @@ final class DashboardViewModel: ObservableObject {
                 balanceNotifier: DemoBalanceNotifier()
             )
         }
-#endif
         return DashboardViewModel()
     }
 

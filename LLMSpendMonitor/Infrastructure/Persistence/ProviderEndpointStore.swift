@@ -10,7 +10,7 @@ final class UserDefaultsProviderEndpointStore: ProviderEndpointStoring, @uncheck
     private let keyPrefix: String
 
     init(
-        defaults: UserDefaults = .standard,
+        defaults: UserDefaults = DemoLaunch.defaults ?? .standard,
         keyPrefix: String = "provider-api-endpoint-v1"
     ) {
         self.defaults = defaults

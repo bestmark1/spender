@@ -379,6 +379,13 @@ final class StatusBarController: NSObject {
     }
 
     func showOnboardingIfNeeded() {
+        // Someone who asked for sample data wants to see the dashboard, not
+        // the welcome screen they just left.
+        if DemoLaunch.isEnabled {
+            appState.skipOnboarding()
+            panelPresenter.show()
+            return
+        }
 #if DEBUG
         if DebugLaunchOptions.dashboardPreview {
             appState.skipOnboarding()

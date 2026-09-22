@@ -26,11 +26,9 @@ struct ConnectionsView: View {
 
     /// The real Keychain, except on a screenshot demo launch.
     static func launchConfiguredCredentialStore() -> CredentialStoring {
-#if DEBUG
         if DemoLaunch.isEnabled {
             return DemoLaunch.credentialStore
         }
-#endif
         return KeychainStore()
     }
 
