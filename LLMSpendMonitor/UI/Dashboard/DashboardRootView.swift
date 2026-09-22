@@ -185,6 +185,7 @@ private struct DashboardView: View {
     let quitApplication: () -> Void
 
     @Environment(\.openSettings) private var openSettings
+    @ObservedObject private var updater = AppUpdater.shared
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -198,6 +199,19 @@ private struct DashboardView: View {
                         d[.firstTextBaseline] - MenuPanelMetrics.titleCapHeight / 2
                     }
                 Spacer()
+                // A scheduled check found an update: offered here, where the
+                // person is already looking, rather than in a window of its own.
+                if updater.hasPendingUpdate {
+                    DashboardHeaderButton(
+                        title: "Install Update",
+                        systemImage: "arrow.down.circle.fill",
+                        accessibilityIdentifier: "dashboard.installUpdate"
+                    ) {
+                        closePanel()
+                        updater.checkForUpdates()
+                    }
+                    .foregroundStyle(Color.accentColor)
+                }
                 DashboardHeaderButton(
                     title: "Refresh",
                     systemImage: "arrow.clockwise",
@@ -336,6 +350,20 @@ private struct DashboardView: View {
                     Label("About Spender", systemImage: StatusBarMenuAction.about.symbolName)
                 }
                 .accessibilityIdentifier("options.about")
+
+                if AppUpdater.isAvailable {
+                    Button {
+                        closePanel()
+                        updater.checkForUpdates()
+                    } label: {
+                        Label(
+                            updater.hasPendingUpdate ? "Install Update…" : "Check for Updates…",
+                            systemImage: StatusBarMenuAction.checkForUpdates.symbolName
+                        )
+                    }
+                    .disabled(!updater.canCheckForUpdates)
+                    .accessibilityIdentifier("options.checkForUpdates")
+                }
 
                 Button {
                     quitApplication()

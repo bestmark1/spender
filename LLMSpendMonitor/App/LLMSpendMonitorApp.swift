@@ -20,6 +20,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         UNUserNotificationCenter.current().delegate = self
+        AppUpdater.shared.start()
         statusBarController = StatusBarController()
         statusBarController?.showOnboardingIfNeeded()
     }
@@ -158,6 +159,7 @@ final class LaunchAtLoginSettingsViewModel: ObservableObject {
 private struct SettingsRootView: View {
     @StateObject private var notifications = NotificationSettingsViewModel()
     @StateObject private var launchAtLogin = LaunchAtLoginSettingsViewModel()
+    @ObservedObject private var updater = AppUpdater.shared
 
     var body: some View {
         Form {
@@ -196,6 +198,28 @@ private struct SettingsRootView: View {
                         .font(.caption)
                         .foregroundStyle(.red)
                         .accessibilityIdentifier("settings.launchAtLoginError")
+                }
+            }
+
+            if AppUpdater.isAvailable {
+                Section("Updates") {
+                    Toggle(
+                        "Check for updates automatically",
+                        isOn: Binding(
+                            get: { updater.automaticallyChecksForUpdates },
+                            set: { updater.automaticallyChecksForUpdates = $0 }
+                        )
+                    )
+                    .accessibilityIdentifier("settings.automaticUpdates")
+
+                    LabeledContent {
+                        Button("Check Now") { updater.checkForUpdates() }
+                            .disabled(!updater.canCheckForUpdates)
+                    } label: {
+                        Text("Once a day, from usespender.com.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
 

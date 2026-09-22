@@ -84,6 +84,61 @@
 		A00000000000000000000149 /* XAIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000254 /* XAIProvider.swift */; };
 		A0000000000000000000014A /* MistralProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000255 /* MistralProviderTests.swift */; };
 		A0000000000000000000014B /* MistralProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000256 /* MistralProvider.swift */; };
+		A0000000000000000000A003 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = A0000000000000000000A002 /* Sparkle */; };
+		A0000000000000000000A100 /* LLMSpendMonitorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000201 /* LLMSpendMonitorApp.swift */; };
+		A0000000000000000000A101 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000202 /* AppState.swift */; };
+		A0000000000000000000A102 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000203 /* StatusBarController.swift */; };
+		A0000000000000000000A103 /* MenuBarLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000204 /* MenuBarLabelView.swift */; };
+		A0000000000000000000A104 /* DashboardRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000205 /* DashboardRootView.swift */; };
+		A0000000000000000000A105 /* ProviderID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000219 /* ProviderID.swift */; };
+		A0000000000000000000A106 /* ProviderCapability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000021A /* ProviderCapability.swift */; };
+		A0000000000000000000A107 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000021B /* ExternalLink.swift */; };
+		A0000000000000000000A108 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000021C /* Money.swift */; };
+		A0000000000000000000A109 /* ProviderRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000021D /* ProviderRegistry.swift */; };
+		A0000000000000000000A10A /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000021E /* KeychainStore.swift */; };
+		A0000000000000000000A10B /* ConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000021F /* ConnectionViewModel.swift */; };
+		A0000000000000000000A10C /* ProviderConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000220 /* ProviderConnectionView.swift */; };
+		A0000000000000000000A10D /* ConnectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000221 /* ConnectionsView.swift */; };
+		A0000000000000000000A10E /* ProviderSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000223 /* ProviderSnapshot.swift */; };
+		A0000000000000000000A10F /* ProviderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000224 /* ProviderClient.swift */; };
+		A0000000000000000000A110 /* SnapshotCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000226 /* SnapshotCache.swift */; };
+		A0000000000000000000A111 /* RefreshTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000227 /* RefreshTrigger.swift */; };
+		A0000000000000000000A112 /* RefreshCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000228 /* RefreshCoordinator.swift */; };
+		A0000000000000000000A113 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000022A /* DashboardViewModel.swift */; };
+		A0000000000000000000A114 /* SpendCompositionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000294 /* SpendCompositionBar.swift */; };
+		A0000000000000000000A115 /* ProviderMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000292 /* ProviderMarkView.swift */; };
+		A0000000000000000000A116 /* DemoDashboardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000290 /* DemoDashboardDataSource.swift */; };
+		A0000000000000000000A117 /* ProviderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000022C /* ProviderCard.swift */; };
+		A0000000000000000000A118 /* MetricRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000022D /* MetricRow.swift */; };
+		A0000000000000000000A119 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000022F /* HTTPClient.swift */; };
+		A0000000000000000000A11A /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000230 /* URLSessionHTTPClient.swift */; };
+		A0000000000000000000A11B /* RefreshBackoffPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000231 /* RefreshBackoffPolicy.swift */; };
+		A0000000000000000000A11C /* OpenAIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000233 /* OpenAIProvider.swift */; };
+		A0000000000000000000A11D /* ProviderTargetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000235 /* ProviderTargetFactory.swift */; };
+		A0000000000000000000A11E /* AnthropicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000237 /* AnthropicProvider.swift */; };
+		A0000000000000000000A11F /* DeepSeekProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000239 /* DeepSeekProvider.swift */; };
+		A0000000000000000000A120 /* GeminiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000023B /* GeminiProvider.swift */; };
+		A0000000000000000000A121 /* CustomizeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000023D /* CustomizeViewModel.swift */; };
+		A0000000000000000000A122 /* ProviderCustomizationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000023E /* ProviderCustomizationStore.swift */; };
+		A0000000000000000000A123 /* CustomizeProvidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000023F /* CustomizeProvidersView.swift */; };
+		A0000000000000000000A124 /* ProviderOrderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000240 /* ProviderOrderRow.swift */; };
+		A0000000000000000000A125 /* PeriodPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000241 /* PeriodPicker.swift */; };
+		A0000000000000000000A126 /* SpendTrendChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000243 /* SpendTrendChart.swift */; };
+		A0000000000000000000A127 /* SummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000244 /* SummaryCard.swift */; };
+		A0000000000000000000A128 /* ProviderVisualStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000245 /* ProviderVisualStyle.swift */; };
+		A0000000000000000000A129 /* PlatformBalanceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000247 /* PlatformBalanceStore.swift */; };
+		A0000000000000000000A12A /* PlatformBalanceEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000248 /* PlatformBalanceEditor.swift */; };
+		A0000000000000000000A12B /* BalanceNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000249 /* BalanceNotificationService.swift */; };
+		A0000000000000000000A12C /* ProviderEndpointStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000024C /* ProviderEndpointStore.swift */; };
+		A0000000000000000000A12D /* QwenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000024D /* QwenProvider.swift */; };
+		A0000000000000000000A12E /* KimiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000251 /* KimiProvider.swift */; };
+		A0000000000000000000A12F /* OpenRouterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000252 /* OpenRouterProvider.swift */; };
+		A0000000000000000000A130 /* XAIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000254 /* XAIProvider.swift */; };
+		A0000000000000000000A131 /* MistralProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000256 /* MistralProvider.swift */; };
+		A0000000000000000000A132 /* Spender.icns in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000024B /* Spender.icns */; };
+		A0000000000000000000A133 /* ProviderMarks.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000291 /* ProviderMarks.xcassets */; };
+		A0000000000000000000A021 /* AppUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000A020 /* AppUpdater.swift */; };
+		A0000000000000000000A022 /* AppUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000A020 /* AppUpdater.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,12 +242,15 @@
 		A00000000000000000000254 /* XAIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAIProvider.swift; sourceTree = "<group>"; };
 		A00000000000000000000255 /* MistralProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistralProviderTests.swift; sourceTree = "<group>"; };
 		A00000000000000000000256 /* MistralProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistralProvider.swift; sourceTree = "<group>"; };
+		A0000000000000000000A017 /* Spender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spender.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0000000000000000000A020 /* AppUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A00000000000000000000601 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		A00000000000000000000601 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (A0000000000000000000A003 /* Sparkle in Frameworks */); runOnlyForDeploymentPostprocessing = 0; };
 		A00000000000000000000602 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 		A00000000000000000000603 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		A0000000000000000000A015 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -226,6 +284,7 @@
 		A00000000000000000000703 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				A0000000000000000000A020 /* AppUpdater.swift */,
 				A00000000000000000000201 /* LLMSpendMonitorApp.swift */,
 				A00000000000000000000202 /* AppState.swift */,
 				A00000000000000000000203 /* StatusBarController.swift */,
@@ -330,6 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				A00000000000000000000210 /* Spender.app */,
+				A0000000000000000000A017 /* Spender.app */,
 				A00000000000000000000211 /* LLMSpendMonitorTests.xctest */,
 				A00000000000000000000212 /* LLMSpendMonitorUITests.xctest */,
 			);
@@ -346,6 +406,7 @@
 			buildRules = ();
 			dependencies = ();
 			name = LLMSpendMonitor;
+			packageProductDependencies = (A0000000000000000000A002 /* Sparkle */);
 			productName = LLMSpendMonitor;
 			productReference = A00000000000000000000210 /* Spender.app */;
 			productType = "com.apple.product-type.application";
@@ -372,6 +433,17 @@
 			productReference = A00000000000000000000212 /* LLMSpendMonitorUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		A0000000000000000000A010 /* SpenderAppStore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0000000000000000000A011 /* Build configuration list for PBXNativeTarget "SpenderAppStore" */;
+			buildPhases = (A0000000000000000000A014 /* Sources */, A0000000000000000000A015 /* Frameworks */, A0000000000000000000A016 /* Resources */);
+			buildRules = ();
+			dependencies = ();
+			name = SpenderAppStore;
+			productName = SpenderAppStore;
+			productReference = A0000000000000000000A017 /* Spender.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -385,6 +457,7 @@
 					A00000000000000000000501 = {CreatedOnToolsVersion = 26.6;};
 					A00000000000000000000502 = {CreatedOnToolsVersion = 26.6; TestTargetID = A00000000000000000000501;};
 					A00000000000000000000503 = {CreatedOnToolsVersion = 26.6; TestTargetID = A00000000000000000000501;};
+					A0000000000000000000A010 = {CreatedOnToolsVersion = 26.6;};
 				};
 			};
 			buildConfigurationList = A00000000000000000000801 /* Build configuration list for PBXProject "LLMSpendMonitor" */;
@@ -393,10 +466,11 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (en, Base);
 			mainGroup = A00000000000000000000701;
+			packageReferences = (A0000000000000000000A001 /* XCRemoteSwiftPackageReference "Sparkle" */);
 			productRefGroup = A00000000000000000000709 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
-			targets = (A00000000000000000000501 /* LLMSpendMonitor */, A00000000000000000000502 /* LLMSpendMonitorTests */, A00000000000000000000503 /* LLMSpendMonitorUITests */);
+			targets = (A00000000000000000000501 /* LLMSpendMonitor */, A00000000000000000000502 /* LLMSpendMonitorTests */, A00000000000000000000503 /* LLMSpendMonitorUITests */, A0000000000000000000A010 /* SpenderAppStore */);
 		};
 /* End PBXProject section */
 
@@ -404,12 +478,14 @@
 		A00000000000000000000621 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (A00000000000000000000140 /* Spender.icns in Resources */, A00000000000000000000191 /* ProviderMarks.xcassets in Resources */); runOnlyForDeploymentPostprocessing = 0; };
 		A00000000000000000000622 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 		A00000000000000000000623 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		A0000000000000000000A016 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (A0000000000000000000A132, A0000000000000000000A133); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A00000000000000000000611 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A00000000000000000000101, A00000000000000000000102, A00000000000000000000103, A00000000000000000000104, A00000000000000000000105, A0000000000000000000010E, A0000000000000000000010F, A00000000000000000000110, A00000000000000000000111, A00000000000000000000112, A00000000000000000000113, A00000000000000000000114, A00000000000000000000115, A00000000000000000000116, A00000000000000000000118, A00000000000000000000119, A0000000000000000000011B, A0000000000000000000011C, A0000000000000000000011D, A0000000000000000000011F, A00000000000000000000194, A00000000000000000000192, A00000000000000000000190, A00000000000000000000121, A00000000000000000000122, A00000000000000000000124, A00000000000000000000125, A00000000000000000000126, A00000000000000000000128, A0000000000000000000012A, A0000000000000000000012C, A0000000000000000000012E, A00000000000000000000130, A00000000000000000000132, A00000000000000000000133, A00000000000000000000134, A00000000000000000000135, A00000000000000000000136, A00000000000000000000138, A00000000000000000000139, A0000000000000000000013A, A0000000000000000000013C, A0000000000000000000013D, A0000000000000000000013E, A00000000000000000000141, A00000000000000000000142, A00000000000000000000146, A00000000000000000000147, A00000000000000000000149, A0000000000000000000014B); runOnlyForDeploymentPostprocessing = 0; };
+		A00000000000000000000611 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A00000000000000000000101, A00000000000000000000102, A00000000000000000000103, A00000000000000000000104, A00000000000000000000105, A0000000000000000000010E, A0000000000000000000010F, A00000000000000000000110, A00000000000000000000111, A00000000000000000000112, A00000000000000000000113, A00000000000000000000114, A00000000000000000000115, A00000000000000000000116, A00000000000000000000118, A00000000000000000000119, A0000000000000000000011B, A0000000000000000000011C, A0000000000000000000011D, A0000000000000000000011F, A00000000000000000000194, A00000000000000000000192, A00000000000000000000190, A00000000000000000000121, A00000000000000000000122, A00000000000000000000124, A00000000000000000000125, A00000000000000000000126, A00000000000000000000128, A0000000000000000000012A, A0000000000000000000012C, A0000000000000000000012E, A00000000000000000000130, A00000000000000000000132, A00000000000000000000133, A00000000000000000000134, A00000000000000000000135, A00000000000000000000136, A00000000000000000000138, A00000000000000000000139, A0000000000000000000013A, A0000000000000000000013C, A0000000000000000000013D, A0000000000000000000013E, A00000000000000000000141, A00000000000000000000142, A00000000000000000000146, A00000000000000000000147, A00000000000000000000149, A0000000000000000000014B, A0000000000000000000A021); runOnlyForDeploymentPostprocessing = 0; };
 		A00000000000000000000612 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A00000000000000000000106, A00000000000000000000108, A00000000000000000000109, A0000000000000000000010A, A0000000000000000000010B, A0000000000000000000010C, A00000000000000000000117, A0000000000000000000011A, A0000000000000000000011E, A00000000000000000000120, A00000000000000000000123, A00000000000000000000127, A00000000000000000000129, A0000000000000000000012B, A0000000000000000000012D, A0000000000000000000012F, A00000000000000000000131, A0000000000000000000013B, A0000000000000000000013F, A00000000000000000000143, A00000000000000000000144, A00000000000000000000145, A00000000000000000000148, A0000000000000000000014A); runOnlyForDeploymentPostprocessing = 0; };
 		A00000000000000000000613 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A00000000000000000000107, A0000000000000000000010D); runOnlyForDeploymentPostprocessing = 0; };
+		A0000000000000000000A014 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A0000000000000000000A100, A0000000000000000000A101, A0000000000000000000A102, A0000000000000000000A103, A0000000000000000000A104, A0000000000000000000A105, A0000000000000000000A106, A0000000000000000000A107, A0000000000000000000A108, A0000000000000000000A109, A0000000000000000000A10A, A0000000000000000000A10B, A0000000000000000000A10C, A0000000000000000000A10D, A0000000000000000000A10E, A0000000000000000000A10F, A0000000000000000000A110, A0000000000000000000A111, A0000000000000000000A112, A0000000000000000000A113, A0000000000000000000A114, A0000000000000000000A115, A0000000000000000000A116, A0000000000000000000A117, A0000000000000000000A118, A0000000000000000000A119, A0000000000000000000A11A, A0000000000000000000A11B, A0000000000000000000A11C, A0000000000000000000A11D, A0000000000000000000A11E, A0000000000000000000A11F, A0000000000000000000A120, A0000000000000000000A121, A0000000000000000000A122, A0000000000000000000A123, A0000000000000000000A124, A0000000000000000000A125, A0000000000000000000A126, A0000000000000000000A127, A0000000000000000000A128, A0000000000000000000A129, A0000000000000000000A12A, A0000000000000000000A12B, A0000000000000000000A12C, A0000000000000000000A12D, A0000000000000000000A12E, A0000000000000000000A12F, A0000000000000000000A130, A0000000000000000000A131, A0000000000000000000A022); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -420,12 +496,14 @@
 /* Begin XCBuildConfiguration section */
 		A00000000000000000000901 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {CLANG_ENABLE_MODULES = YES; MACOSX_DEPLOYMENT_TARGET = 14.0; SDKROOT = macosx; SWIFT_STRICT_CONCURRENCY = complete;}; name = Debug; };
 		A00000000000000000000902 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {CLANG_ENABLE_MODULES = YES; MACOSX_DEPLOYMENT_TARGET = 14.0; SDKROOT = macosx; SWIFT_COMPILATION_MODE = wholemodule; SWIFT_STRICT_CONCURRENCY = complete;}; name = Release; };
-		A00000000000000000000903 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_ENTITLEMENTS = LLMSpendMonitor/LLMSpendMonitor.entitlements; "CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development"; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 2; DEVELOPMENT_TEAM = NZRRXJA2HB; ENABLE_HARDENED_RUNTIME = YES; ENABLE_TESTABILITY = YES; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = LLMSpendMonitor/Info.plist; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks"; MARKETING_VERSION = 0.1.0; PRODUCT_BUNDLE_IDENTIFIER = com.bestmark1.Spender; PRODUCT_MODULE_NAME = LLMSpendMonitor; PRODUCT_NAME = Spender; SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; SWIFT_VERSION = 6.0;}; name = Debug; };
-		A00000000000000000000904 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_ENTITLEMENTS = LLMSpendMonitor/LLMSpendMonitor.entitlements; "CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development"; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 2; DEVELOPMENT_TEAM = NZRRXJA2HB; ENABLE_HARDENED_RUNTIME = YES; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = LLMSpendMonitor/Info.plist; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks"; MARKETING_VERSION = 0.1.0; PRODUCT_BUNDLE_IDENTIFIER = com.bestmark1.Spender; PRODUCT_MODULE_NAME = LLMSpendMonitor; PRODUCT_NAME = Spender; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 6.0;}; name = Release; };
+		A00000000000000000000903 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_ENTITLEMENTS = LLMSpendMonitor/LLMSpendMonitor.entitlements; "CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development"; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 3; DEVELOPMENT_TEAM = NZRRXJA2HB; ENABLE_HARDENED_RUNTIME = YES; ENABLE_TESTABILITY = YES; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = LLMSpendMonitor/Info.plist; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks"; MARKETING_VERSION = 0.2.0; PRODUCT_BUNDLE_IDENTIFIER = com.bestmark1.Spender; PRODUCT_MODULE_NAME = LLMSpendMonitor; PRODUCT_NAME = Spender; SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; SWIFT_VERSION = 6.0;}; name = Debug; };
+		A00000000000000000000904 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_ENTITLEMENTS = LLMSpendMonitor/LLMSpendMonitor.entitlements; "CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development"; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 3; DEVELOPMENT_TEAM = NZRRXJA2HB; ENABLE_HARDENED_RUNTIME = YES; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = LLMSpendMonitor/Info.plist; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks"; MARKETING_VERSION = 0.2.0; PRODUCT_BUNDLE_IDENTIFIER = com.bestmark1.Spender; PRODUCT_MODULE_NAME = LLMSpendMonitor; PRODUCT_NAME = Spender; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 6.0;}; name = Release; };
 		A00000000000000000000905 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {BUNDLE_LOADER = "$(TEST_HOST)"; CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks"; PRODUCT_BUNDLE_IDENTIFIER = com.bestmark1.SpenderTests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 6.0; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spender.app/Contents/MacOS/Spender";}; name = Debug; };
 		A00000000000000000000906 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {BUNDLE_LOADER = "$(TEST_HOST)"; CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks"; PRODUCT_BUNDLE_IDENTIFIER = com.bestmark1.SpenderTests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 6.0; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spender.app/Contents/MacOS/Spender";}; name = Release; };
 		A00000000000000000000907 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks"; PRODUCT_BUNDLE_IDENTIFIER = com.bestmark1.SpenderUITests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 6.0; TEST_TARGET_NAME = LLMSpendMonitor;}; name = Debug; };
 		A00000000000000000000908 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks"; PRODUCT_BUNDLE_IDENTIFIER = com.bestmark1.SpenderUITests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 6.0; TEST_TARGET_NAME = LLMSpendMonitor;}; name = Release; };
+		A0000000000000000000A012 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_ENTITLEMENTS = LLMSpendMonitor/LLMSpendMonitor-AppStore.entitlements; "CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development"; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 3; DEVELOPMENT_TEAM = NZRRXJA2HB; ENABLE_HARDENED_RUNTIME = YES; ENABLE_TESTABILITY = YES; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = LLMSpendMonitor/Info-AppStore.plist; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks"; MARKETING_VERSION = 0.2.0; PRODUCT_BUNDLE_IDENTIFIER = com.bestmark1.Spender; PRODUCT_MODULE_NAME = LLMSpendMonitor; PRODUCT_NAME = Spender; SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG APP_STORE"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; SWIFT_VERSION = 6.0;}; name = Debug; };
+		A0000000000000000000A013 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_ENTITLEMENTS = LLMSpendMonitor/LLMSpendMonitor-AppStore.entitlements; "CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development"; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 3; DEVELOPMENT_TEAM = NZRRXJA2HB; ENABLE_HARDENED_RUNTIME = YES; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = LLMSpendMonitor/Info-AppStore.plist; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks"; MARKETING_VERSION = 0.2.0; PRODUCT_BUNDLE_IDENTIFIER = com.bestmark1.Spender; PRODUCT_MODULE_NAME = LLMSpendMonitor; PRODUCT_NAME = Spender; SWIFT_ACTIVE_COMPILATION_CONDITIONS = APP_STORE; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 6.0;}; name = Release; };
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -433,7 +511,27 @@
 		A00000000000000000000802 /* Build configuration list for PBXNativeTarget "LLMSpendMonitor" */ = {isa = XCConfigurationList; buildConfigurations = (A00000000000000000000903, A00000000000000000000904); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 		A00000000000000000000803 /* Build configuration list for PBXNativeTarget "LLMSpendMonitorTests" */ = {isa = XCConfigurationList; buildConfigurations = (A00000000000000000000905, A00000000000000000000906); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 		A00000000000000000000804 /* Build configuration list for PBXNativeTarget "LLMSpendMonitorUITests" */ = {isa = XCConfigurationList; buildConfigurations = (A00000000000000000000907, A00000000000000000000908); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		A0000000000000000000A011 /* Build configuration list for PBXNativeTarget "SpenderAppStore" */ = {isa = XCConfigurationList; buildConfigurations = (A0000000000000000000A012, A0000000000000000000A013); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A0000000000000000000A001 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A0000000000000000000A002 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A0000000000000000000A001 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A00000000000000000000401 /* Project object */;
 }

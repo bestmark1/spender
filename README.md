@@ -179,9 +179,16 @@ The installer builds from the current checkout, replaces only `/Applications/Spe
 
 `./scripts/release.zsh` produces the published DMG: it archives the Release
 build, signs it with a Developer ID, has Apple notarize the app and the DMG,
-staples both and checks them with Gatekeeper. It needs the maintainer's
-Developer ID certificate and stored notarization credentials, and it only
-writes to `.build/release/`; publishing the release is a separate step.
+staples both, checks them with Gatekeeper, signs the DMG for Sparkle and adds
+it to `site/appcast.xml`. `./scripts/release.zsh appstore` builds the
+`SpenderAppStore` target — the same app without Sparkle, which the App Store
+updates itself — for App Store Connect; add `--upload` to send it. It needs the
+maintainer's certificates, stored notarization credentials and the Sparkle
+signing key. Publishing the GitHub release and the appcast are separate steps.
+
+The direct download updates itself through [Sparkle](https://sparkle-project.org):
+it checks `https://usespender.com/appcast.xml` once a day and offers the update
+in the panel rather than interrupting.
 
 ## Tests
 

@@ -248,7 +248,7 @@ final class MenuBarShellTests: XCTestCase {
 
         XCTAssertEqual(
             menu.items.map(\.title),
-            ["Customize", "Connections", "Settings", "About Spender", "Quit Spender"]
+            ["Customize", "Connections", "Settings", "About Spender", "Check for Updates…", "Quit Spender"]
         )
         XCTAssertTrue(menu.items.allSatisfy { !$0.isSeparatorItem && $0.submenu == nil })
         XCTAssertTrue(
@@ -273,8 +273,10 @@ final class MenuBarShellTests: XCTestCase {
         // About is asserted but not performed: it activates the app and puts a
         // panel on screen, which a unit test has no business doing.
         XCTAssertEqual(menu.items[3].title, "About Spender")
+        // Likewise for updates: a check goes to the network and shows a window.
+        XCTAssertEqual(menu.items[4].title, "Check for Updates…")
 
-        interaction.performMenuItem(menu.items[4])
+        interaction.performMenuItem(menu.items[5])
         XCTAssertEqual(quitCount, 1)
     }
 

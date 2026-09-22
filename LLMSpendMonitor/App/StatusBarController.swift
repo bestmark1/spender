@@ -136,7 +136,13 @@ enum StatusBarMenuAction: Int, CaseIterable, Equatable {
     case connections
     case settings
     case about
+    case checkForUpdates
     case quit
+
+    /// The items a menu shows. The App Store build has no updater.
+    static var visibleCases: [StatusBarMenuAction] {
+        allCases.filter { $0 != .checkForUpdates || AppUpdater.isAvailable }
+    }
 
     var title: String {
         switch self {
@@ -144,6 +150,7 @@ enum StatusBarMenuAction: Int, CaseIterable, Equatable {
         case .connections: "Connections"
         case .settings: "Settings"
         case .about: "About Spender"
+        case .checkForUpdates: "Check for Updates…"
         case .quit: "Quit Spender"
         }
     }
@@ -156,6 +163,7 @@ enum StatusBarMenuAction: Int, CaseIterable, Equatable {
         case .connections: "key"
         case .settings: "gearshape"
         case .about: "info.circle"
+        case .checkForUpdates: "arrow.triangle.2.circlepath"
         case .quit: "power"
         }
     }
@@ -261,7 +269,7 @@ final class StatusBarInteractionController: NSObject {
     func makeContextMenu() -> NSMenu {
         let menu = NSMenu()
         menu.autoenablesItems = false
-        for action in StatusBarMenuAction.allCases {
+        for action in StatusBarMenuAction.visibleCases {
             let item = NSMenuItem(
                 title: action.title,
                 action: #selector(performMenuItem(_:)),
@@ -301,6 +309,9 @@ final class StatusBarInteractionController: NSObject {
         case .about:
             panelPresenter.hide()
             AboutPanel.present()
+        case .checkForUpdates:
+            panelPresenter.hide()
+            AppUpdater.shared.checkForUpdates()
         case .quit:
             quitApplication()
         }

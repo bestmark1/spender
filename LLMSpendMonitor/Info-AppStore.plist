@@ -20,6 +20,8 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSUIElement</key>
@@ -28,11 +30,5 @@
 	<string>© 2026 bestmark1</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>SUEnableInstallerLauncherService</key>
-	<true/>
-	<key>SUFeedURL</key>
-	<string>https://usespender.com/appcast.xml</string>
-	<key>SUPublicEDKey</key>
-	<string>GvB4lkG7VxGvVSK4EBCK8pP8KzP/uvuHDkTPlcS+Rqw=</string>
 </dict>
 </plist>

@@ -6,14 +6,6 @@
 	<true/>
 	<key>com.apple.security.network.client</key>
 	<true/>
-	<!-- Sparkle installs updates through its own XPC services, outside the
-	     sandbox; these are the two names it looks them up by. The App Store
-	     build has no Sparkle and no exceptions. -->
-	<key>com.apple.security.temporary-exception.mach-lookup.global-name</key>
-	<array>
-		<string>$(PRODUCT_BUNDLE_IDENTIFIER)-spks</string>
-		<string>$(PRODUCT_BUNDLE_IDENTIFIER)-spki</string>
-	</array>
 	<key>com.apple.security.files.user-selected.read-only</key>
 	<true/>
 	<!-- Pinned to the app's first bundle identifier, not derived from the
