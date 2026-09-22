@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Spender</title>
+    <link>https://usespender.com/appcast.xml</link>
+    <description>Updates for Spender, the macOS menu bar app for LLM API spend.</description>
+    <language>en</language>
+    <!-- scripts/release.zsh adds each release here, newest first. -->
+    <item>
+      <title>Spender 0.2.0</title>
+      <pubDate>Tue, 22 Sep 2026 09:27:39 GMT</pubDate>
+      <sparkle:version>3</sparkle:version>
+      <sparkle:shortVersionString>0.2.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <sparkle:releaseNotesLink>https://github.com/bestmark1/spender/releases/tag/v0.2.0</sparkle:releaseNotesLink>
+      <enclosure url="https://github.com/bestmark1/spender/releases/download/v0.2.0/Spender.dmg" type="application/octet-stream" sparkle:edSignature="yLdvwQhXjs4h7+Xiw89jok3ZkS1s+P/fouJRdQjw7pWO30oKOoZlaRgFhUbalFu+Nv6Pe33g+gen7tiD0RfmAQ==" length="3987861" />
+    </item>
+  </channel>
+</rss>
